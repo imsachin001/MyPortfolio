@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 
-type RouteKey = "/" | "/project1" | "/project2" | "/project3";
+type RouteKey = "/" | "/projects" | "/about" | "/contact" | "/project1" | "/project2" | "/project3";
 
 type ProjectRoute = Exclude<RouteKey, "/">;
 
@@ -12,33 +12,43 @@ type ProjectInfo = {
   summary: string;
   detail: string;
   demo: string;
+  tags: string[];
 };
 
 const PROJECTS: ProjectInfo[] = [
   {
-    label: "Project1",
+    label: "AI Resume Analyzer",
     path: "/project1",
-    eyebrow: "Webflow Development",
-    summary: "Editorial landing page with a soft, premium motion intro.",
-    detail: "A warm, minimal project card built to match the source template with the same calm spacing and serif-led hierarchy.",
-    demo: "Demo area for project one content, interactions, and presentation.",
+    eyebrow: "AI-Powered Resume Evaluation",
+    summary: "AI-powered resume evaluation platform that analyzes resumes, calculates ATS scores, and generates personalized improvement suggestions.",
+    detail: "A full-stack AI-powered platform that evaluates resumes against job descriptions, computes ATS compatibility scores, and provides actionable, role-specific improvement suggestions powered by Gemini AI.",
+    demo: "Demo area for AI Resume Analyzer — live analysis, ATS scoring, and improvement suggestions.",
+    tags: ["React", "Node.js", "MongoDB", "Gemini AI"],
   },
   {
-    label: "Project2",
+    label: "ChronoSync",
     path: "/project2",
-    eyebrow: "Framer Development",
-    summary: "A refined showcase layout with bold type and quiet rhythm.",
-    detail: "The page keeps the same color family, letter spacing, and vertical balance so the second project feels part of the same system.",
-    demo: "Demo area for project two interactions and supporting visuals.",
+    eyebrow: "Intelligent Productivity Platform",
+    summary: "An intelligent productivity platform that schedules tasks using AI, manages notes, and visualizes weekly productivity analytics.",
+    detail: "An intelligent productivity suite that uses Gemini AI to auto-schedule tasks, integrates a rich notes manager, and displays weekly analytics through clean, readable charts.",
+    demo: "Demo area for ChronoSync — AI scheduling, note management, and productivity analytics.",
+    tags: ["React", "Express", "MongoDB", "Gemini"],
   },
   {
-    label: "Project3",
+    label: "Notes Manager",
     path: "/project3",
-    eyebrow: "Product Design",
-    summary: "Simple, high-contrast project presentation with room for details.",
-    detail: "This route can host the final case study, demo states, and supporting copy while keeping the same warm palette.",
-    demo: "Demo area for project three proof, motion, and content.",
+    eyebrow: "Containerized REST API",
+    summary: "A containerized REST API deployed using Docker and Kubernetes, demonstrating modern backend deployment workflows.",
+    detail: "A production-ready containerized REST API built with Node.js, packaged with Docker, and orchestrated via Kubernetes — showcasing real-world cloud deployment patterns.",
+    demo: "Demo area for Notes Manager — API endpoints, container architecture, and Kubernetes orchestration.",
+    tags: ["Node.js", "Docker", "Kubernetes"],
   },
+];
+
+const HOME_LABELS: Array<{ label: string; path: "/projects" | "/about" | "/contact" }> = [
+  { label: "PROJECTS", path: "/projects" },
+  { label: "ABOUT", path: "/about" },
+  { label: "CONTACT", path: "/contact" },
 ];
 
 const SOCIALS = [
@@ -48,6 +58,10 @@ const SOCIALS = [
 ];
 
 function getRoute(pathname: string): RouteKey {
+  if (pathname === "/projects" || pathname === "/about" || pathname === "/contact") {
+    return pathname;
+  }
+
   if (pathname === "/project1" || pathname === "/project2" || pathname === "/project3") {
     return pathname;
   }
@@ -113,22 +127,91 @@ function HomeView({ onNavigate }: { onNavigate: (path: RouteKey) => void }) {
         transition={{ duration: 1.9, ease: [0.2, 0.9, 0.15, 1], delay: 0.55 }}
       >
         <div className="home-copy-block">
-          <p className="hero-name">PROJECTS</p>
+          <p className="hero-name">LAUREN WALLER</p>
           <p className="hero-description">
-            A focused set of three project studies presented with the same color template, spacing, and serif-led rhythm as the reference.
+            Award-winning Product Designer working full-time at Detail Technologies - winner of Apple&apos;s iPad App of the Year 2025.
           </p>
-          <p className="hero-description hero-description--small">Click a project to open its details and demo.</p>
+          <p className="hero-description hero-description--small">Framer Developer and Partner.</p>
         </div>
 
         <nav className="hero-nav" aria-label="Primary">
-          {PROJECTS.map((project) => (
-            <button key={project.label} type="button" className="hero-nav-item" onClick={() => onNavigate(project.path)}>
-              {project.label}
+          {HOME_LABELS.map((item) => (
+            <button key={item.label} type="button" className="hero-nav-item" onClick={() => onNavigate(item.path)}>
+              {item.label}
             </button>
           ))}
         </nav>
       </motion.div>
     </section>
+  );
+}
+
+function ProjectsView({ onNavigate }: { onNavigate: (path: RouteKey) => void }) {
+  return (
+    <motion.section
+      className="section-layout section-layout--projects"
+      initial={{ opacity: 0, filter: "blur(12px)", y: 12 }}
+      animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+      transition={{ duration: 0.8, ease: [0.2, 0.9, 0.15, 1] }}
+    >
+      <div className="section-copy">
+        
+        <span className="section-eyebrow">PROJECTS</span>
+        <h2 className="projects-quote">
+          Every project started with a real problem, not just an idea. From AI-powered applications to cloud deployments, these are the products I&apos;ve designed, built, and deployed from scratch.
+        </h2>
+        <p className="projects-subtext">
+          Each project showcases the complete development journey—from identifying a problem and designing the architecture to implementing, deploying, and refining the final product. I focus on writing clean code, building practical features, and understanding the engineering decisions behind every solution.
+        </p>
+      </div>
+
+      <div className="project-card-row">
+        {PROJECTS.map((project, index) => (
+          <motion.div
+            key={project.label}
+            role="button"
+            tabIndex={0}
+            className="project-card"
+            onClick={() => onNavigate(project.path)}
+            onKeyDown={(e) => e.key === "Enter" && onNavigate(project.path)}
+            initial={{ opacity: 0, y: 38 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.68, ease: [0.2, 0.9, 0.15, 1], delay: index * 0.14 }}
+          >
+            <span className="project-card-eyebrow">{project.eyebrow}</span>
+            <strong className="project-card-title">{project.label}</strong>
+            <span className="project-card-summary">{project.summary}</span>
+            <div className="project-card-tags">
+              {project.tags.map((tag) => (
+                <span key={tag} className="project-tag">{tag}</span>
+              ))}
+            </div>
+            <span className="project-card-cta">&rarr; View Case Study</span>
+          </motion.div>
+        ))}
+      </div>
+    </motion.section>
+  );
+}
+
+function SimpleView({ title, body, onNavigate }: { title: string; body: string; onNavigate: (path: RouteKey) => void }) {
+  return (
+    <motion.section
+      className="section-layout"
+      initial={{ opacity: 0, filter: "blur(12px)", y: 12 }}
+      animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+      transition={{ duration: 0.8, ease: [0.2, 0.9, 0.15, 1] }}
+    >
+      <div className="section-copy">
+        <button type="button" className="back-link" onClick={() => onNavigate("/")}>
+          BACK HOME
+        </button>
+        <span className="section-eyebrow">INFO</span>
+        <h1>{title}</h1>
+        <p>{body}</p>
+      </div>
+    </motion.section>
   );
 }
 
@@ -178,6 +261,26 @@ export default function App() {
         {route === "/" ? (
           <motion.div key="home" className="page-frame" exit={{ opacity: 0, filter: "blur(8px)" }}>
             <HomeView onNavigate={navigate} />
+          </motion.div>
+        ) : route === "/projects" ? (
+          <motion.div key="projects" className="page-frame" exit={{ opacity: 0, filter: "blur(8px)" }}>
+            <ProjectsView onNavigate={navigate} />
+          </motion.div>
+        ) : route === "/about" ? (
+          <motion.div key="about" className="page-frame" exit={{ opacity: 0, filter: "blur(8px)" }}>
+            <SimpleView
+              title="ABOUT"
+              body="Keep the about section here. The project list stays on the PROJECTS page and the detail demos stay on the project routes."
+              onNavigate={navigate}
+            />
+          </motion.div>
+        ) : route === "/contact" ? (
+          <motion.div key="contact" className="page-frame" exit={{ opacity: 0, filter: "blur(8px)" }}>
+            <SimpleView
+              title="CONTACT"
+              body="Keep the contact section here. The editorial palette and spacing stay consistent across all pages."
+              onNavigate={navigate}
+            />
           </motion.div>
         ) : (
           <motion.div key={route} className="page-frame" exit={{ opacity: 0, filter: "blur(8px)" }}>

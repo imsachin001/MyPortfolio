@@ -1,13 +1,11 @@
+
 :root {
   color-scheme: dark;
-  font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Bodoni Moda", Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
   line-height: 1.5;
   font-weight: 400;
-  color: rgba(245, 248, 255, 0.94);
-  background:
-    radial-gradient(circle at top left, rgba(86, 170, 255, 0.25), transparent 30%),
-    radial-gradient(circle at right center, rgba(255, 138, 92, 0.16), transparent 28%),
-    linear-gradient(160deg, #060b14 0%, #0a1423 54%, #05080f 100%);
+  color: #efe7bd;
+  background: #141311;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -26,26 +24,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: transparent;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-  background-size: 64px 64px;
-  opacity: 0.28;
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(to bottom, rgba(6, 11, 20, 0.12), rgba(6, 11, 20, 0.68) 82%);
+  background: #141311;
 }
 
 a {
@@ -65,219 +44,333 @@ a {
 .app-shell {
   position: relative;
   min-height: 100vh;
-  padding: 32px;
   overflow: hidden;
+  background: linear-gradient(180deg, #191815 0%, #11100e 100%);
 }
 
-.backdrop {
-  position: absolute;
-  border-radius: 999px;
-  filter: blur(40px);
-  opacity: 0.75;
+.page-bg {
+  position: fixed;
+  inset: 0;
   pointer-events: none;
 }
 
-.backdrop-a {
-  top: -160px;
-  left: -120px;
-  width: 360px;
-  height: 360px;
-  background: rgba(115, 177, 255, 0.26);
+.page-bg--gold {
+  background:
+    radial-gradient(circle at top left, rgba(241, 230, 178, 0.1), transparent 30%),
+    linear-gradient(180deg, rgba(241, 230, 178, 0.05) 0%, transparent 54%);
 }
 
-.backdrop-b {
-  right: -140px;
-  bottom: 80px;
-  width: 320px;
-  height: 320px;
-  background: rgba(255, 145, 103, 0.2);
+.page-bg--ink {
+  background: linear-gradient(180deg, rgba(10, 9, 8, 0.08), rgba(10, 9, 8, 0.72) 74%, rgba(7, 7, 6, 0.96));
 }
 
-.hero-card,
-.content-grid {
+.page-frame {
   position: relative;
-  z-index: 1;
+  min-height: 100vh;
 }
 
-.hero-card {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-  gap: 28px;
-  align-items: center;
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 32px;
-  background: rgba(8, 14, 24, 0.88);
-  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.35);
-}
-
-.hero-copy {
-  padding: 12px 8px 12px 4px;
-}
-
-.eyebrow,
-.card-label,
-.visual-caption {
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-size: 0.72rem;
-  color: rgba(182, 205, 230, 0.76);
-}
-
-.hero-copy h1 {
-  margin: 16px 0 18px;
-  max-width: 12ch;
-  font-size: clamp(3rem, 7vw, 6.8rem);
-  line-height: 0.92;
-  letter-spacing: -0.06em;
-}
-
-.lede {
-  max-width: 60ch;
-  margin: 0;
-  font-size: 1.02rem;
-  color: rgba(221, 232, 244, 0.78);
-}
-
-.hero-actions {
+.social-rail {
+  position: fixed;
+  top: 26px;
+  left: 28px;
+  z-index: 4;
   display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin: 28px 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  color: #e7dfbb;
 }
 
-.primary-btn,
-.secondary-btn {
+.social-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
-  padding: 0 20px;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(231, 223, 187, 0.78);
+  border-radius: 2px;
+  font-family: "Bodoni Moda", Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+  font-size: 0.68rem;
+  line-height: 1;
 }
 
-.primary-btn {
-  background: linear-gradient(135deg, #f4f7ff 0%, #b8f3ff 100%);
-  color: #07111e;
-  font-weight: 700;
+.rail-line {
+  width: 1px;
+  height: 108px;
+  background: rgba(231, 223, 187, 0.8);
 }
 
-.secondary-btn {
-  border-color: rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.03);
+.rail-year {
+  position: fixed;
+  left: 26px;
+  bottom: 28px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  letter-spacing: 0.2em;
+  font-size: 0.72rem;
 }
 
-.primary-btn:hover,
-.secondary-btn:hover {
-  transform: translateY(-2px);
+.home-layout {
+  position: relative;
+  min-height: 100vh;
+  padding: 24px;
 }
 
-.stat-grid {
+.intro-wipe {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.intro-wipe-top,
+.intro-wipe-bottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.intro-wipe-top {
+  top: 0;
+  height: 62%;
+  background: linear-gradient(180deg, #e7dcaa 0%, #d2c27d 16%, #8d7a46 40%, #181714 100%);
+}
+
+.intro-wipe-bottom {
+  bottom: 0;
+  height: 38%;
+  background: linear-gradient(180deg, #181714 0%, #10100f 100%);
+}
+
+.home-panel {
+  position: relative;
+  z-index: 2;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: minmax(280px, 0.55fr) minmax(0, 1fr);
+  align-items: center;
+  min-height: 100vh;
+  gap: 34px;
+  padding: 2.5vh 4vw 4vh 14vw;
 }
 
-.stat-card {
-  padding: 16px;
-  border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.04);
+.home-copy-block {
+  align-self: center;
+  max-width: 360px;
+  padding-bottom: 12vh;
 }
 
-.stat-card strong,
-.stat-card span {
-  display: block;
+.hero-name {
+  margin: 0 0 16px;
+  color: #e9e0be;
+  font-family: "Bodoni Moda", Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
 }
 
-.stat-card strong {
-  font-size: 1rem;
+.hero-description {
+  margin: 0;
+  color: rgba(233, 224, 190, 0.88);
+  font-family: "Bodoni Moda", Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+  font-size: 0.98rem;
+  line-height: 1.75;
 }
 
-.stat-card span {
-  margin-top: 6px;
-  color: rgba(214, 226, 240, 0.68);
-  font-size: 0.9rem;
+.hero-description + .hero-description {
+  margin-top: 18px;
 }
 
-.hero-visual {
+.hero-description--small {
+  max-width: 18ch;
+}
+
+.hero-nav {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 18px;
+  min-height: 84vh;
 }
 
-.visual-frame {
-  height: min(74vh, 640px);
-  min-height: 440px;
-  overflow: hidden;
-  border-radius: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+.hero-nav-item {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #ece5c2;
+  font-family: "Bodoni Moda", Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+  font-size: clamp(4.1rem, 8.2vw, 7.6rem);
+  line-height: 0.84;
+  letter-spacing: -0.105em;
+  text-align: left;
+  cursor: pointer;
+  transform-origin: left center;
+  transition: transform 180ms ease, opacity 180ms ease;
 }
 
-.visual-caption {
-  padding-left: 4px;
+.hero-nav-item:hover {
+  transform: translateX(8px);
+  opacity: 0.9;
 }
 
-.content-grid {
+.section-layout {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 28px;
+  align-content: center;
+  min-height: 100vh;
+  padding: 5vh 8vw 8vh 14vw;
+}
+
+.section-copy {
+  max-width: 720px;
+}
+
+.section-eyebrow {
+  display: block;
+  margin: 0 0 10px;
+  color: rgba(234, 226, 194, 0.7);
+  font-family: "Bodoni Moda", Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.back-link {
+  margin: 0 0 16px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #ece5c2;
+  font-family: "Bodoni Moda", Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  cursor: pointer;
+}
+
+.section-copy h1 {
+  margin: 0;
+  color: #f0e9c6;
+  font-family: "Bodoni Moda", Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+  font-size: clamp(4rem, 7.5vw, 7.6rem);
+  line-height: 0.88;
+  letter-spacing: -0.1em;
+}
+
+.section-copy p {
+  max-width: 38ch;
+  margin: 18px 0 0;
+  color: rgba(234, 226, 194, 0.78);
+  font-family: "Bodoni Moda", Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+  font-size: 0.98rem;
+  line-height: 1.85;
+}
+
+.section-card-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-  max-width: 1240px;
-  margin: 24px auto 0;
+  gap: 16px;
+  max-width: 720px;
 }
 
-.info-card {
-  padding: 24px;
-  border-radius: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  background: rgba(255, 255, 255, 0.07);
+.section-card {
+  padding: 22px;
+  border: 1px solid rgba(236, 229, 194, 0.12);
+  border-radius: 22px;
+  background: rgba(236, 229, 194, 0.04);
 }
 
-.info-card h2 {
-  margin: 14px 0 12px;
-  font-size: clamp(1.5rem, 3vw, 2.3rem);
-  line-height: 1.05;
+.section-card span {
+  display: block;
+  color: rgba(236, 229, 194, 0.65);
+  font-family: "Bodoni Moda", Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
-.info-card p {
-  margin: 0;
-  color: rgba(221, 232, 244, 0.74);
+.section-card strong {
+  display: block;
+  margin-top: 16px;
+  color: #f0e9c6;
+  font-size: 1rem;
+  line-height: 1.45;
 }
 
 @media (max-width: 1024px) {
-  .hero-card,
-  .content-grid {
+  .home-panel,
+  .section-layout {
+    padding-left: 96px;
+  }
+
+  .home-panel {
     grid-template-columns: 1fr;
+    align-items: start;
+    gap: 12px;
+    padding-top: 1.5vh;
   }
 
-  .hero-card {
-    padding: 20px;
+  .home-copy-block {
+    padding-bottom: 0;
+    max-width: 440px;
   }
 
-  .visual-frame {
-    min-height: 360px;
+  .hero-nav {
+    min-height: 0;
+    padding-top: 14px;
+  }
+
+  .hero-nav-item {
+    font-size: clamp(3.6rem, 11.5vw, 6.3rem);
+  }
+
+  .section-card-row {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 720px) {
-  .app-shell {
+  .social-rail {
+    left: 16px;
+    top: 16px;
+    gap: 22px;
+  }
+
+  .rail-year {
+    left: 14px;
+    bottom: 16px;
+  }
+
+  .home-layout,
+  .section-layout {
     padding: 16px;
   }
 
-  .hero-copy h1 {
-    max-width: none;
+  .home-panel {
+    min-height: calc(100vh - 32px);
+    padding: 28px 0 0;
   }
 
-  .stat-grid {
-    grid-template-columns: 1fr;
+  .home-copy-block {
+    max-width: 100%;
   }
 
-  .content-grid {
-    grid-template-columns: 1fr;
+  .hero-nav-item {
+    font-size: clamp(3rem, 16vw, 5rem);
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+  }
+
+  .section-copy h1 {
+    font-size: clamp(3rem, 17vw, 5rem);
+  }
+
+  .section-copy p {
+    font-size: 0.95rem;
   }
 }

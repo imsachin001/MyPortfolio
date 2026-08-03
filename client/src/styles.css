@@ -1094,8 +1094,8 @@ a {
 
 .pd-gallery {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(2, minmax(1, 1fr));
+  gap: 38px;
 }
 
 .pd-gallery-card {
@@ -1112,8 +1112,23 @@ a {
 }
 
 .pd-gallery-thumb {
-  padding: 20px 20px 0;
+  padding: 0;
   background: rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+}
+
+.pd-gallery-real-img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 500ms ease;
+}
+
+.pd-gallery-card:hover .pd-gallery-real-img {
+  transform: scale(1.03);
 }
 
 .pd-gallery-mockup {
@@ -1542,5 +1557,784 @@ a {
 
   .pd-learned-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ABOUT PAGE — ab-* namespace
+═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Shell ── */
+
+.ab-shell {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(180deg, #0e0d0b 0%, #121110 100%);
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+/* ── Shared section ── */
+
+.ab-section {
+  padding: 84px 100px;
+  border-bottom: 1px solid rgba(236, 229, 194, 0.07);
+}
+
+.ab-section--alt {
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.ab-section-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ── Shared typography ── */
+
+.ab-label {
+  display: block;
+  color: rgba(236, 229, 194, 0.42);
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.ab-heading {
+  margin: 0 0 24px;
+  color: #f0e9c6;
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: clamp(1.45rem, 2.4vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.022em;
+}
+
+.ab-body {
+  color: rgba(236, 229, 194, 0.78);
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 1.02rem;
+  line-height: 1.9;
+  margin: 0;
+}
+
+.ab-body--gap {
+  margin-top: 20px;
+}
+
+.ab-body--subhead {
+  margin-bottom: 32px;
+  color: rgba(236, 229, 194, 0.6);
+  font-size: 0.97rem;
+}
+
+/* ── Two-column layout ── */
+
+.ab-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.ab-two-col-label {
+  position: sticky;
+  top: 80px;
+}
+
+.ab-two-col-body {
+  /* natural flow */
+}
+
+/* ── HERO ── */
+
+.ab-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 100px 96px;
+  background: linear-gradient(135deg, #181612 0%, #0d0c0a 60%, #151311 100%);
+  border-bottom: 1px solid rgba(236, 229, 194, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+
+.ab-hero-inner {
+  position: relative;
+  z-index: 2;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 680px;
+}
+
+/* ── Profile photo ── */
+
+.ab-hero-photo-wrap {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 380px;
+  display: flex;
+  margin-left: 100px;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.ab-hero-photo-frame {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(236, 229, 194, 0.13);
+  box-shadow:
+    0 0 0 1px rgba(236, 229, 194, 0.06),
+    0 32px 64px rgba(0, 0, 0, 0.55),
+    0 0 80px rgba(241, 230, 160, 0.05);
+}
+
+.ab-hero-photo {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  object-position: center 10%;
+  display: block;
+  transition: transform 600ms ease;
+}
+
+.ab-hero-photo-frame:hover .ab-hero-photo {
+  transform: scale(1.04);
+}
+
+.ab-hero-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 55%,
+    rgba(13, 12, 10, 0.6) 100%
+  );
+  pointer-events: none;
+}
+
+.ab-hero-photo-caption {
+  color: rgba(236, 229, 194, 0.38);
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.ab-hero-glow {
+  position: absolute;
+  top: -100px;
+  right: -140px;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(241, 230, 160, 0.06) 0%, transparent 66%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ab-eyebrow {
+  display: block;
+  color: rgba(236, 229, 194, 0.44);
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.ab-title {
+  margin: 0 0 32px;
+  color: #f0e9c6;
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: clamp(2.2rem, 4.8vw, 4.8rem);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.038em;
+}
+
+.ab-title-muted {
+  color: rgba(236, 229, 194, 0.4);
+}
+
+.ab-intro {
+  max-width: 62ch;
+  color: rgba(236, 229, 194, 0.72);
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 1.06rem;
+  line-height: 1.85;
+  margin: 0;
+}
+
+.ab-intro strong {
+  color: #f0e9c6;
+  font-weight: 700;
+}
+
+/* ── STATS ── */
+
+.ab-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border: 1px solid rgba(236, 229, 194, 0.09);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.ab-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 44px 20px;
+  text-align: center;
+  position: relative;
+  transition: background 200ms ease;
+}
+
+.ab-stat:not(:last-child) {
+  border-right: 1px solid rgba(236, 229, 194, 0.09);
+}
+
+.ab-stat:hover {
+  background: rgba(236, 229, 194, 0.025);
+}
+
+.ab-stat-value {
+  color: #f0e9c6;
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.ab-stat-divider {
+  width: 24px;
+  height: 1px;
+  background: rgba(241, 230, 160, 0.3);
+  margin-bottom: 14px;
+}
+
+.ab-stat-label {
+  color: rgba(236, 229, 194, 0.44);
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ── WHAT I BUILD grid ── */
+
+.ab-build-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ab-build-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border: 1px solid rgba(236, 229, 194, 0.08);
+  border-radius: 12px;
+  background: rgba(236, 229, 194, 0.018);
+  transition: border-color 200ms ease, background 200ms ease;
+}
+
+.ab-build-item:hover {
+  border-color: rgba(241, 230, 160, 0.18);
+  background: rgba(236, 229, 194, 0.032);
+}
+
+.ab-build-mark {
+  flex-shrink: 0;
+  color: rgba(241, 230, 160, 0.5);
+  font-size: 0.72rem;
+}
+
+.ab-build-text {
+  color: rgba(236, 229, 194, 0.8);
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+/* ── PHILOSOPHY ── */
+
+.ab-philosophy {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ab-philosophy-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 24px;
+  border: 1px solid rgba(236, 229, 194, 0.08);
+  border-radius: 14px;
+  background: rgba(236, 229, 194, 0.018);
+  transition: border-color 200ms ease, transform 180ms ease;
+}
+
+.ab-philosophy-item:hover {
+  border-color: rgba(236, 229, 194, 0.16);
+  transform: translateX(4px);
+}
+
+.ab-philosophy-num {
+  color: rgba(241, 230, 160, 0.32);
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+
+.ab-philosophy-text {
+  color: rgba(236, 229, 194, 0.78);
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+
+/* ── TECH GROUPS ── */
+
+.ab-tech-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.ab-tech-group {
+  padding: 24px 22px;
+  border: 1px solid rgba(236, 229, 194, 0.09);
+  border-radius: 14px;
+  background: rgba(236, 229, 194, 0.02);
+  transition: border-color 200ms ease;
+}
+
+.ab-tech-group:hover {
+  border-color: rgba(236, 229, 194, 0.16);
+}
+
+.ab-tech-group-label {
+  display: block;
+  color: rgba(241, 230, 160, 0.5);
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.ab-tech-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.ab-tech-chip {
+  display: inline-block;
+  padding: 5px 12px;
+  border: 1px solid rgba(236, 229, 194, 0.12);
+  border-radius: 100px;
+  color: rgba(236, 229, 194, 0.72);
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  background: rgba(236, 229, 194, 0.03);
+  transition: border-color 180ms ease, color 180ms ease;
+}
+
+.ab-tech-chip:hover {
+  border-color: rgba(241, 230, 160, 0.28);
+  color: #f0e9c6;
+}
+
+/* ── LOOKING AHEAD card ── */
+
+.ab-looking-card {
+  padding: 36px 40px;
+  border: 1px solid rgba(236, 229, 194, 0.1);
+  border-radius: 18px;
+  background: rgba(236, 229, 194, 0.025);
+  position: relative;
+  overflow: hidden;
+}
+
+.ab-looking-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(241, 230, 160, 0.55) 0%, rgba(241, 230, 160, 0.08) 100%);
+  border-radius: 0 2px 2px 0;
+}
+
+.ab-looking-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.ab-looking-tag {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 1px solid rgba(241, 230, 160, 0.18);
+  border-radius: 100px;
+  color: rgba(241, 230, 160, 0.65);
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  background: rgba(241, 230, 160, 0.04);
+}
+
+/* ── QUOTE section ── */
+
+.ab-section--quote {
+  position: relative;
+  overflow: hidden;
+  border-bottom: none;
+  padding: 100px 100px 80px;
+  background: linear-gradient(135deg, #11100e 0%, #0d0c0a 100%);
+}
+
+.ab-quote {
+  margin: 0 auto;
+  max-width: 680px;
+  text-align: center;
+  color: rgba(236, 229, 194, 0.68);
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: clamp(1.15rem, 2vw, 1.65rem);
+  font-style: italic;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  position: relative;
+  z-index: 2;
+}
+
+.ab-quote-open,
+.ab-quote-close {
+  color: rgba(241, 230, 160, 0.28);
+  font-size: 1.4em;
+  font-style: normal;
+  line-height: 0;
+  vertical-align: -0.18em;
+  margin: 0 4px;
+}
+
+.ab-quote-glow {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 260px;
+  background: radial-gradient(ellipse, rgba(241, 230, 160, 0.055) 0%, transparent 68%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 1024px) {
+  .ab-section,
+  .ab-hero,
+  .ab-section--quote {
+    padding-left: 100px;
+    padding-right: 40px;
+  }
+
+  .ab-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ab-stat:nth-child(2) {
+    border-right: none;
+  }
+
+  .ab-stat:nth-child(3) {
+    border-top: 1px solid rgba(236, 229, 194, 0.09);
+  }
+
+  .ab-stat:nth-child(4) {
+    border-top: 1px solid rgba(236, 229, 194, 0.09);
+    border-right: none;
+  }
+
+  .ab-tech-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ab-hero {
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .ab-hero-photo-wrap {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 500px;
+    align-self: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .ab-section,
+  .ab-hero,
+  .ab-section--quote {
+    padding-left: 60px;
+    padding-right: 24px;
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .ab-two-col {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .ab-two-col-label {
+    position: static;
+  }
+
+  .ab-build-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ab-tech-groups {
+    grid-template-columns: 1fr;
+  }
+
+  .ab-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ab-looking-card {
+    padding: 24px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ab-section,
+  .ab-hero,
+  .ab-section--quote {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .ab-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ab-stat {
+    padding: 32px 14px;
+  }
+
+  .ab-title {
+    font-size: clamp(1.9rem, 10vw, 3rem);
+  }
+
+  .ab-philosophy-item {
+    grid-template-columns: 30px 1fr;
+    gap: 12px;
+  }
+
+  .ab-quote {
+    font-size: 1.05rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CONTACT PAGE — ct-* namespace
+═══════════════════════════════════════════════════════════════════════════ */
+
+/* Full-viewport cream shell */
+.ct-shell {
+  position: relative;
+  min-height: 100vh;
+  background: #e8e4c8;
+  display: flex;
+  overflow: hidden;
+}
+
+/* ── Left vertical rail ── */
+
+.ct-rail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 52px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 0 28px;
+  z-index: 10;
+  gap: 0;
+}
+
+.ct-rail-home {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgba(23, 22, 20, 0.55);
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 180ms ease;
+  margin-bottom: 20px;
+}
+
+.ct-rail-home:hover {
+  color: #171614;
+}
+
+.ct-rail-line {
+  flex: 1;
+  width: 1px;
+  background: rgba(23, 22, 20, 0.28);
+}
+
+.ct-rail-year {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: rgba(23, 22, 20, 0.4);
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  margin-top: 20px;
+}
+
+/* ── Main content ── */
+
+.ct-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10vh 10vw 10vh 14vw;
+  min-height: 100vh;
+}
+
+/* ── Giant "Hello." headline ── */
+
+.ct-hello {
+  margin: 0 0 6vh;
+  color: #171614;
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: clamp(4rem, 18vw, 16rem);
+  font-weight: 600;
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+}
+
+/* ── Body section ── */
+
+.ct-body {
+  max-width: 480px;
+}
+
+.ct-tagline {
+  margin: 0 0 38px;
+  color: rgba(23, 22, 20, 0.72);
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 0.97rem;
+  line-height: 1.78;
+}
+
+/* ── Links ── */
+
+.ct-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ct-link-row {
+  margin: 0;
+  color: rgba(23, 22, 20, 0.72);
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+.ct-link-label {
+  color: rgba(23, 22, 20, 0.55);
+}
+
+.ct-link {
+  color: #171614;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  font-family: "Bodoni Moda", Georgia, serif;
+  transition: opacity 160ms ease;
+}
+
+.ct-link:hover {
+  opacity: 0.55;
+}
+
+.ct-slash {
+  color: rgba(23, 22, 20, 0.38);
+  margin: 0 2px;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 768px) {
+  .ct-content {
+    padding: 10vh 6vw 10vh 72px;
+  }
+
+  .ct-hello {
+    font-size: clamp(4rem, 22vw, 8rem);
+    margin-bottom: 5vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .ct-rail {
+    width: 40px;
+  }
+
+  .ct-content {
+    padding: 8vh 5vw 8vh 52px;
+  }
+
+  .ct-hello {
+    font-size: clamp(3.5rem, 24vw, 6rem);
+  }
+
+  .ct-tagline {
+    font-size: 0.9rem;
+  }
+
+  .ct-link-row {
+    font-size: 0.88rem;
   }
 }
